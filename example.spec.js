@@ -15,6 +15,7 @@ class Playwright_actions {
         }
         catch (error) {
             console.log(`Error clicking element with xpath ${xpath}: ${error}`);
+            throw error;
         }
     }
 
@@ -25,6 +26,7 @@ class Playwright_actions {
         }
         catch (error) {
             console.log(`Error entering text in element with xpath ${xpath}: ${error}`);
+            throw error;
         }
     }
 
@@ -37,6 +39,7 @@ class Playwright_actions {
         }
         catch (error) {
             console.log(`Error handling dialog: ${error}`);
+            throw error;
         }
     }
 
