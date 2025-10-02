@@ -32,7 +32,7 @@ class Playwright_actions {
 
     async wait_for_dialog() {
         try {
-            let dialog = await this.page.waitForEvent('dialog')
+            let dialog = await this.page.waitForEvent('dialog', { timeout: 5000 });
             let messages = await dialog.message();
             await dialog.accept();
             return messages;
