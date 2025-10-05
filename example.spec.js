@@ -11,6 +11,7 @@ class Playwright_actions {
     async click_element(xpath) {
         try {
             let element = await this.page.locator(xpath);
+            await element.waitFor({ state: 'visible', timeout: 5000 });
             await element.click();
         }
         catch (error) {
@@ -22,6 +23,7 @@ class Playwright_actions {
     async enter_text(xpath, text) {
         try {
             let element = await this.page.locator(xpath);
+            await element.waitFor({ state: 'visible', timeout: 5000 });
             await element.fill(text);
         }
         catch (error) {
@@ -34,6 +36,7 @@ class Playwright_actions {
         try {
             let dialog = await this.page.waitForEvent('dialog', { timeout: 5000 });
             let messages = await dialog.message();
+            await this.page.waitForTimeout(1000)
             await dialog.accept();
             return messages;
         }
@@ -48,10 +51,10 @@ class Playwright_actions {
 class DemoBlaze_page extends Playwright_actions {
     constructor(page) {
        super(page);
-       this.sign_up_link = "//a[text()='Sign up']";
-       this.username_field = "//input[@id='sign-username']";
-       this.password_field = "//input[@id='sign-password']";
-       this.sign_up_button = "//button[text()='Sign up']";
+       this.sign_up_link = 'a:has-text("Sign up")';
+       this.username_field = '#sign-username';
+       this.password_field = '#sign-password';
+       this.sign_up_button = 'button:has-text("Sign up")';
     }
 
     async sign_up(user, password) {

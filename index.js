@@ -1,7 +1,6 @@
-import { test, expect } from '@playwright/test';
 
+function f({a,c}) {
+    console.log(a,c);
+}
 
-test('homepage has title', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
-});
-
+f({a:1,b:2,c:3})
