@@ -1,6 +1,12 @@
 
-function f({a,c}) {
-    console.log(a,c);
+function f(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Hello, World!");
+        }, 3000);
+    })
 }
 
-f({a:1,b:2,c:3})
+let t = await f()
+console.log(t);
+

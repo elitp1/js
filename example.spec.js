@@ -68,12 +68,24 @@ class DemoBlaze_page extends Playwright_actions {
 }
 
 const DEMOBLAZEURL =  'https://demoblaze.com/'
-test('test', async ({ page }) => {
-    await page.goto(DEMOBLAZEURL);
-    await page.waitForTimeout(3000);
-    let DemoBlaze_page_actions = new DemoBlaze_page(page);
-    let result = await DemoBlaze_page_actions.sign_up("Hilit","Prizant");
-    console.log(result);
-    expect (result).toBe("This user already exist.")
-});
+test.describe('Demo Blaze Page', ()=>{
+    test('test1', async ({ page }) => {
+        await page.goto(DEMOBLAZEURL);
+        await page.waitForTimeout(3000);
+        let DemoBlaze_page_actions = new DemoBlaze_page(page);
+        let result = await DemoBlaze_page_actions.sign_up("Hilit","Prizant");
+        console.log(result);
+        expect (result).toBe("This user already exist.")
+    });
+    test('test2', async ({ page }) => {
+        await page.goto(DEMOBLAZEURL);
+        await page.waitForTimeout(3000);
+        let DemoBlaze_page_actions = new DemoBlaze_page(page);
+        let result = await DemoBlaze_page_actions.sign_up("Hilit","Prizant");
+        console.log(result);
+        expect (result).toBe("This user already exist.")
+    });
+
+
+})
 
